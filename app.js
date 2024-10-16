@@ -9,6 +9,7 @@ const robotBaker = document.getElementById("robot-baker");
 const cookieFactory = document.getElementById("cookie-factory");
 const magicFlour = document.getElementById("magic-flour");
 const timeMachine = document.getElementById("time-machine");
+const quantOven = document.getElementById("quantum-oven");
 const alienTechnology = document.getElementById("alien-technology");
 const interdimensionalBaker = document.getElementById("interdimensional-baker");
 
@@ -47,11 +48,13 @@ async function handleClickApi(buttonId) {
     const upgrade = data.find((item) => item.id === buttonId);
 
     if (upgrade) {
-      // Check if enough cookies to purchase the upgrade
+      // Check if the player has enough cookies to purchase the upgrade
       if (cookies >= upgrade.cost) {
-        // Deduct the cost of the upgrade
+        // Subtract the cost of the upgrade
         cookies -= upgrade.cost;
-        cps += upgrade.increase; // Increase cookies per second (cps)
+
+        // Increase cookies per second (cps)
+        cps += upgrade.increase;
 
         // Update the display
         cookieDisplay.textContent = cookies;
@@ -62,8 +65,8 @@ async function handleClickApi(buttonId) {
         localStorage.setItem("cps", cps);
 
         console.log(`You purchased: ${upgrade.name}`);
-        console.log(`Cookies increased by: ${upgrade.increase}`);
-        console.log(`Total cookies: ${cookies}`);
+        console.log(`Cookies reduced by: ${upgrade.cost}`);
+        console.log(`Cookies remaining: ${cookies}`);
       } else {
         console.log("Not enough cookies to purchase this upgrade.");
       }
@@ -83,5 +86,6 @@ robotBaker.addEventListener("click", () => handleClickApi(4));
 cookieFactory.addEventListener("click", () => handleClickApi(5));
 magicFlour.addEventListener("click", () => handleClickApi(6));
 timeMachine.addEventListener("click", () => handleClickApi(7));
-alienTechnology.addEventListener("click", () => handleClickApi(8));
-interdimensionalBaker.addEventListener("click", () => handleClickApi(9));
+quantOven.addEventListener("click", () => handleClickApi(8));
+alienTechnology.addEventListener("click", () => handleClickApi(9));
+interdimensionalBaker.addEventListener("click", () => handleClickApi(10));
