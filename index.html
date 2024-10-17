@@ -3,52 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A clicker game that collects cookies that can be used to purchase upgrades"
+    />
     <title>Cookie Clicker</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./app.js" defer></script>
   </head>
   <body>
     <h1>Nick's Cookie Shop</h1>
 
     <p>Cookies: <span id="cookie-display">0</span></p>
-    <p>Per Sec: <span id="cps-display">0</span></p>
+    <p>Cookies Per Sec: <span id="cps-display">0</span></p>
     <div>
       <button id="cookie-btn">
         <img
           class="cookie"
-          src="./assets/cookie.png"
+          src="./assets/Img/cookie.png"
           alt="picture of chocolate chip cookie"
         />
       </button>
     </div>
+    <p id="user-message"></p>
     <div id="btn-container">
-      <button id="auto-clicker">Auto Clicker - <span>100 Cookies</span></button>
-      <button id="enhanced-oven">
+      <button id="auto-clicker" title="Auto increases cookies per second +1">
+        Auto Clicker - <span>100 Cookies</span>
+      </button>
+
+      <button id="enhanced-oven" title="Increase cookies per second +5">
         Enhanced Oven - <span>500 Cookies</span>
       </button>
-      <button id="cookie-farm">Cookie Farm - <span>1000 Cookies</span></button>
-      <button id="robot-baker">Robot Baker - <span>2000 Cookies</span></button>
-      <button id="cookie-factory">
+
+      <button id="cookie-farm" title="Increase cookies per second +10">
+        Cookie Farm - <span>1000 Cookies</span>
+      </button>
+
+      <button id="robot-baker" title="Increase cookies per second +20">
+        Robot Baker - <span>2000 Cookies</span>
+      </button>
+
+      <button id="cookie-factory" title="Increase cookies per second +50">
         Cookie Factory - <span>5000 Cookies</span>
       </button>
-      <button id="magic-flour">
+
+      <button id="magic-flour" title="Increase cookies per second +100">
         Magic Flour - <span>10,000 Cookies</span>
       </button>
-      <button id="time-machine">
+
+      <button id="time-machine" title="Increase cookies per second +200">
         Time Machine - <span>20,000 Cookies</span>
       </button>
-      <button id="quantum-oven">
+
+      <button id="quantum-oven" title="Increase cookies per second +500">
         Quantum Oven - <span>50,000 Cookies</span>
       </button>
-      <button id="alien-technology">
+
+      <button id="alien-technology" title="Increase cookies per second +1000">
         Alien Technology - <span>100,000 Cookies</span>
       </button>
-      <button id="interdimensional-baker">
+
+      <button
+        id="interdimensional-baker"
+        title="Increase cookies per second +2000"
+      >
         Interdimensional Baker - <span>200,000 Cookies</span>
       </button>
     </div>
     <div>
       <button id="reset">Reset Button</button>
     </div>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

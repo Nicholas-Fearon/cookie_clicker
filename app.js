@@ -1,7 +1,9 @@
 // DOM Nodes
+
 const cookieBtn = document.getElementById("cookie-btn");
 const cookieDisplay = document.getElementById("cookie-display");
 const cpsDisplay = document.getElementById("cps-display");
+const userMsg = document.getElementById("user-message");
 const autoClicker = document.getElementById("auto-clicker");
 const enhancedOven = document.getElementById("enhanced-oven");
 const cookieFarm = document.getElementById("cookie-farm");
@@ -23,9 +25,20 @@ let cps = parseInt(localStorage.getItem("cps")) || 0; // get from local storage,
 cookieDisplay.textContent = cookies;
 cpsDisplay.textContent = cps;
 
+//Audio for each cookie click
 const ding = function () {
-  const sound = new Audio("./assets/mouse-click.mp3");
+  const sound = new Audio("./assets/sounds/mouse-click.mp3");
   sound.play();
+};
+
+//Not enough cookies message
+const notEnoughMsg = function () {
+  const sound = new Audio("./assets/sounds/error-sound.mp3");
+  sound.play();
+  userMsg.textContent = "Not enough cookies to purchase this upgrade.";
+  setTimeout(function () {
+    userMsg.textContent = "";
+  }, 2000);
 };
 
 // Game Logic
@@ -55,6 +68,16 @@ async function handleClickApi(buttonId) {
     // Find the upgrade that corresponds to the clicked button
     const upgrade = data.find((item) => item.id === buttonId);
 
+    //You have purchased message
+    const purchasedMsg = function () {
+      const sound = new Audio("./assets/sounds/new purchase.mp3");
+      sound.play();
+      userMsg.textContent = `You purchased: ${upgrade.name}`;
+      setTimeout(function () {
+        userMsg.textContent = "";
+      }, 2000);
+    };
+
     if (upgrade) {
       // Check if the player has enough cookies to purchase the upgrade
       if (cookies >= upgrade.cost) {
@@ -72,10 +95,11 @@ async function handleClickApi(buttonId) {
         localStorage.setItem("cookies", cookies);
         localStorage.setItem("cps", cps);
 
-        console.log(`You purchased: ${upgrade.name}`);
+        purchasedMsg();
         console.log(`Cookies reduced by: ${upgrade.cost}`);
         console.log(`Cookies remaining: ${cookies}`);
       } else {
+        notEnoughMsg();
         console.log("Not enough cookies to purchase this upgrade.");
       }
     } else {
@@ -100,10 +124,12 @@ interdimensionalBaker.addEventListener("click", () => handleClickApi(10));
 
 // Reset button for game
 reset.addEventListener("click", function () {
+  const sound = new Audio("./assets/sounds/turning-down-power-48657.mp3");
+  sound.play();
   cookies = 0;
   cps = 0;
   cpsDisplay.textContent = cps;
-
+  userMsg.textContent = "";
   localStorage.setItem("cookies", 0);
   localStorage.setItem("cps", 0);
 });
