@@ -12,6 +12,8 @@ const timeMachine = document.getElementById("time-machine");
 const quantOven = document.getElementById("quantum-oven");
 const alienTechnology = document.getElementById("alien-technology");
 const interdimensionalBaker = document.getElementById("interdimensional-baker");
+const reset = document.getElementById("reset");
+const cookieImg = document.getElementById("cookie");
 
 // Game State
 let cookies = parseInt(localStorage.getItem("cookies")) || 0; // get from local storage, default to 0
@@ -20,6 +22,11 @@ let cps = parseInt(localStorage.getItem("cps")) || 0; // get from local storage,
 // Update cookie display and cps display initially
 cookieDisplay.textContent = cookies;
 cpsDisplay.textContent = cps;
+
+const ding = function () {
+  const sound = new Audio("./assets/mouse-click.mp3");
+  sound.play();
+};
 
 // Game Logic
 // Every second, increase cookies by cps
@@ -31,6 +38,7 @@ setInterval(function () {
 
 // Get a cookie when clicking the main button
 cookieBtn.addEventListener("click", function () {
+  ding();
   cookies += 1;
   cookieDisplay.textContent = cookies;
   localStorage.setItem("cookies", cookies); // Update local storage
@@ -89,3 +97,13 @@ timeMachine.addEventListener("click", () => handleClickApi(7));
 quantOven.addEventListener("click", () => handleClickApi(8));
 alienTechnology.addEventListener("click", () => handleClickApi(9));
 interdimensionalBaker.addEventListener("click", () => handleClickApi(10));
+
+// Reset button for game
+reset.addEventListener("click", function () {
+  cookies = 0;
+  cps = 0;
+  cpsDisplay.textContent = cps;
+
+  localStorage.setItem("cookies", 0);
+  localStorage.setItem("cps", 0);
+});
