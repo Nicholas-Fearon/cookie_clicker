@@ -3,6 +3,22 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+span {
+  font-size: larger;
+  font-weight: bold;
+}
+
+p {
+  text-decoration: underline;
 }
 #cookie-btn {
   background-color: white;
@@ -31,4 +47,39 @@ button {
   height: auto;
   width: auto;
   margin: 5px;
+  padding: 8px;
+  background-color: white;
+  border-radius: 20px;
+  border: solid 1px lightgray;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: black;
+  border: solid 1px white;
+  color: white;
+}
+
+#reset {
+  color: red;
+  font-weight: bolder;
+  border: 1px solid red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+#user-message {
+  height: 50px;
+  color: green;
+  font-size: larger;
+  text-decoration: none;
+}
+
+@media (min-width: 600px) {
+  #btn-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

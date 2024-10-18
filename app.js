@@ -16,6 +16,7 @@ const alienTechnology = document.getElementById("alien-technology");
 const interdimensionalBaker = document.getElementById("interdimensional-baker");
 const reset = document.getElementById("reset");
 const cookieImg = document.getElementById("cookie");
+const btn = document.querySelectorAll("button");
 
 // Game State
 let cookies = parseInt(localStorage.getItem("cookies")) || 0; // get from local storage, default to 0
@@ -132,4 +133,5 @@ reset.addEventListener("click", function () {
   userMsg.textContent = "";
   localStorage.setItem("cookies", 0);
   localStorage.setItem("cps", 0);
+  btn.disabled = true;
 });
