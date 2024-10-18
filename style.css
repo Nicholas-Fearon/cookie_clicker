@@ -12,14 +12,16 @@ h1 {
   font-weight: bolder;
 }
 
-span {
+p {
   font-size: larger;
   font-weight: bold;
 }
 
-p {
-  text-decoration: underline;
+span {
+  font-size: large;
+  font-weight: bold;
 }
+
 #cookie-btn {
   background-color: white;
   border: 0 solid white;
