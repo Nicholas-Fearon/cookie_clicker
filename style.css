@@ -63,9 +63,9 @@ button:hover {
 }
 
 #reset {
-  color: red;
+  color: black;
   font-weight: bolder;
-  border: 1px solid red;
+  border: 1px solid black;
   position: absolute;
   top: 0;
   right: 0;
