@@ -72,6 +72,11 @@ button:hover {
   margin: 10px;
 }
 
+#reset:hover {
+  background-color: black;
+  color: white;
+}
+
 #user-message {
   height: 50px;
   color: green;
